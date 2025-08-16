@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Results - MCQ Exam Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bee0ec;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer {
+            background-color: #0f3c4c;
+        }
+        .font-roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+        .bottom-nav {
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .quick-exam-btn {
+            transform: translateY(-50%);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #0f3c4c;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button class="text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40/0f3c4c/ffffff?text=L" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-xl font-bold font-roboto-slab text-[#0f3c4c]">My Results</span>
+                </a>
+            </div>
+            <a href="profile.html" class="bg-[#0f3c4c] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition duration-300 flex items-center space-x-2">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-6">
+        <h1 class="text-3xl font-bold text-center mb-8 font-roboto-slab text-[#0f3c4c]">Your Exam History</h1>
+
+        <!-- Tabs Navigation -->
+        <div class="mb-6 bg-white p-2 rounded-lg shadow-md max-w-2xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <button class="tab-button active w-full py-2 px-4 font-semibold rounded-md text-sm" onclick="openTab(event, 'daily')">Daily Exams</button>
+                <button class="tab-button w-full py-2 px-4 font-semibold rounded-md text-sm" onclick="openTab(event, 'weekly')">Weekly</button>
+                <button class="tab-button w-full py-2 px-4 font-semibold rounded-md text-sm" onclick="openTab(event, 'monthly')">Monthly</button>
+                <button class="tab-button w-full py-2 px-4 font-semibold rounded-md text-sm" onclick="openTab(event, 'subject')">Subject-wise</button>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="results-tabs" class="max-w-4xl mx-auto">
+            <!-- Daily Exams Tab -->
+            <div id="daily" class="tab-content active space-y-4">
+                <!-- Result Card -->
+                <div class="bg-white p-5 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center transition hover:shadow-xl hover:border-l-4 border-blue-500">
+                    <div>
+                        <p class="font-bold text-lg font-lato text-gray-800">Daily Live Exam</p>
+                        <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> August 15, 2024</p>
+                    </div>
+                    <div class="text-center my-3 sm:my-0">
+                        <p class="text-2xl font-bold text-green-600">28<span class="text-base font-normal text-gray-600">/30</span></p>
+                        <p class="text-sm text-gray-500">Score</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm font-semibold">
+                        View Details
+                    </button>
+                </div>
+                 <!-- Result Card -->
+                <div class="bg-white p-5 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center transition hover:shadow-xl hover:border-l-4 border-blue-500">
+                    <div>
+                        <p class="font-bold text-lg font-lato text-gray-800">Daily Live Exam</p>
+                        <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> August 14, 2024</p>
+                    </div>
+                    <div class="text-center my-3 sm:my-0">
+                        <p class="text-2xl font-bold text-orange-500">19<span class="text-base font-normal text-gray-600">/30</span></p>
+                        <p class="text-sm text-gray-500">Score</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm font-semibold">
+                        View Details
+                    </button>
+                </div>
+                 <!-- Result Card -->
+                <div class="bg-white p-5 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center transition hover:shadow-xl hover:border-l-4 border-red-500">
+                    <div>
+                        <p class="font-bold text-lg font-lato text-gray-800">Daily Live Exam</p>
+                        <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> August 13, 2024</p>
+                    </div>
+                    <div class="text-center my-3 sm:my-0">
+                        <p class="text-2xl font-bold text-red-600">Missed</p>
+                        <p class="text-sm text-gray-500">Status</p>
+                    </div>
+                    <button class="bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed text-sm font-semibold">
+                        No Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Weekly Exams Tab -->
+            <div id="weekly" class="tab-content space-y-4">
+                <!-- Result Card -->
+                <div class="bg-white p-5 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center transition hover:shadow-xl hover:border-l-4 border-purple-500">
+                    <div>
+                        <p class="font-bold text-lg font-lato text-gray-800">Weekly Exam - Week 2</p>
+                        <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> August 10, 2024</p>
+                    </div>
+                    <div class="text-center my-3 sm:my-0">
+                        <p class="text-2xl font-bold text-green-600">85<span class="text-base font-normal text-gray-600">/100</span></p>
+                        <p class="text-sm text-gray-500">Score</p>
+                    </div>
+                    <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 text-sm font-semibold">
+                        View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Monthly Exams Tab -->
+            <div id="monthly" class="tab-content">
+                <div class="text-center bg-white p-8 rounded-lg shadow-md">
+                    <i class="fas fa-box-open text-5xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-600">No monthly exam results yet.</p>
+                </div>
+            </div>
+
+            <!-- Subject-wise Tab -->
+            <div id="subject" class="tab-content space-y-4">
+                <!-- Result Card -->
+                <div class="bg-white p-5 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center transition hover:shadow-xl hover:border-l-4 border-teal-500">
+                    <div>
+                        <p class="font-bold text-lg font-lato text-gray-800">English - Tenses Practice</p>
+                        <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> August 12, 2024</p>
+                    </div>
+                    <div class="text-center my-3 sm:my-0">
+                        <p class="text-2xl font-bold text-green-600">18<span class="text-base font-normal text-gray-600">/20</span></p>
+                        <p class="text-sm text-gray-500">Score</p>
+                    </div>
+                    <button class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 text-sm font-semibold">
+                        Review Answers
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-white pt-10 pb-24 md:pb-10">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 ExamPro. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white h-16 flex items-center justify-around md:hidden bottom-nav">
+        <a href="index.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs block">Home</span>
+        </a>
+        <a href="#menu" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-bars text-xl"></i>
+            <span class="text-xs block">Menu</span>
+        </a>
+        <a href="exam.html" class="quick-exam-btn w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl -mt-8 border-4 border-white">
+            <i class="fas fa-bolt"></i>
+        </a>
+        <a href="leaderboard.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs block">Leaders</span>
+        </a>
+        <a href="profile.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs block">Account</span>
+        </a>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active');
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
