@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exams - MCQ Exam Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bee0ec;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer {
+            background-color: #0f3c4c;
+        }
+        .font-roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+        .bottom-nav {
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .quick-exam-btn {
+            transform: translateY(-50%);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+        }
+        .option-label {
+            transition: all 0.2s ease-in-out;
+        }
+        .option-label:hover {
+            background-color: #d1eaf2;
+        }
+        input[type="radio"]:checked + .option-label {
+            background-color: #0f3c4c;
+            color: white;
+            border-color: #0f3c4c;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button class="text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40/0f3c4c/ffffff?text=L" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-xl font-bold font-roboto-slab text-[#0f3c4c]">Exams</span>
+                </a>
+            </div>
+            <a href="profile.html" class="bg-[#0f3c4c] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition duration-300 flex items-center space-x-2">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-6" id="exam-selection">
+        <h1 class="text-3xl font-bold text-center mb-8 font-roboto-slab text-[#0f3c4c]">Choose Your Challenge</h1>
+
+        <!-- Exam Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Today's Live Exam -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-red-500 transform hover:-translate-y-2 transition-transform duration-300">
+                <i class="fas fa-satellite-dish text-4xl text-red-500 mb-3"></i>
+                <h2 class="text-2xl font-bold font-lato mb-2">Today's Live Exam</h2>
+                <p class="text-gray-600 mb-4">The daily competitive exam is now live. Compete with others and climb the leaderboard!</p>
+                <button onclick="startExam()" class="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity duration-300">
+                    Start Now
+                </button>
+            </div>
+
+            <!-- Weekly/Monthly Exams -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-blue-500 transform hover:-translate-y-2 transition-transform duration-300">
+                <i class="fas fa-calendar-alt text-4xl text-blue-500 mb-3"></i>
+                <h2 class="text-2xl font-bold font-lato mb-2">Scheduled Exams</h2>
+                <p class="text-gray-600 mb-4">Check the syllabus and schedule for upcoming weekly and monthly exams.</p>
+                <button class="w-full bg-blue-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">
+                    View Schedule
+                </button>
+            </div>
+
+            <!-- Previous Exams -->
+            <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-purple-500 transform hover:-translate-y-2 transition-transform duration-300">
+                <i class="fas fa-history text-4xl text-purple-500 mb-3"></i>
+                <h2 class="text-2xl font-bold font-lato mb-2">Previous Exams</h2>
+                <p class="text-gray-600 mb-4">Missed an exam? Practice with question sets from previous live exams.</p>
+                <button class="w-full bg-purple-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300">
+                    Practice Now
+                </button>
+            </div>
+
+            <!-- Subject Wise Exam -->
+            <div class="md:col-span-2 lg:col-span-3 bg-white p-6 rounded-lg shadow-lg border-t-4 border-green-500 transform hover:-translate-y-2 transition-transform duration-300">
+                 <i class="fas fa-book text-4xl text-green-500 mb-3"></i>
+                <h2 class="text-2xl font-bold font-lato mb-2">Subject-wise Practice</h2>
+                <p class="text-gray-600 mb-4">Hone your skills in specific subjects and chapters at your own pace. No competition, just learning.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     <button class="bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300">English</button>
+                     <button class="bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300">Bangla</button>
+                     <button class="bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300">Math</button>
+                     <button class="bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300">Science</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Exam Interface (Hidden by default) -->
+    <div id="exam-interface" class="hidden container mx-auto p-4 md:p-6">
+        <!-- Sticky Header with Timer -->
+        <div class="sticky top-0 bg-[#bee0ec] py-4 z-10">
+            <div class="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold font-roboto-slab text-[#0f3c4c]">Daily Live Exam</h1>
+                    <p class="text-sm text-gray-600">Total Marks: 30</p>
+                </div>
+                <div class="text-center">
+                    <div id="timer" class="text-2xl font-bold text-red-500 bg-red-100 px-4 py-2 rounded-lg">
+                        <i class="fas fa-clock"></i> 29:59
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions Container -->
+        <div class="bg-white p-6 rounded-lg shadow-md mt-4">
+            <!-- Question 1 -->
+            <div class="mb-8">
+                <p class="text-lg font-semibold mb-4">1. What is the capital of Bangladesh?</p>
+                <div class="space-y-3">
+                    <div>
+                        <input type="radio" name="q1" id="q1o1" class="hidden">
+                        <label for="q1o1" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Dhaka</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o2" class="hidden">
+                        <label for="q1o2" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Chittagong</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o3" class="hidden">
+                        <label for="q1o3" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Sylhet</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o4" class="hidden">
+                        <label for="q1o4" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Rajshahi</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+             <div class="mb-8">
+                <p class="text-lg font-semibold mb-4">2. Which river is known as the lifeline of Bangladesh?</p>
+                <div class="space-y-3">
+                    <div>
+                        <input type="radio" name="q2" id="q2o1" class="hidden">
+                        <label for="q2o1" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Jamuna</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o2" class="hidden">
+                        <label for="q2o2" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Padma</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o3" class="hidden">
+                        <label for="q2o3" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Meghna</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o4" class="hidden">
+                        <label for="q2o4" class="option-label block w-full text-left p-4 border-2 rounded-lg cursor-pointer">Brahmaputra</label>
+                    </div>
+                </div>
+            </div>
+            <!-- More questions would be added here dynamically -->
+
+            <button class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors duration-300 mt-6 text-xl">
+                Submit Exam
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer text-white pt-10 pb-24 md:pb-10">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 ExamPro. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white h-16 flex items-center justify-around md:hidden bottom-nav">
+        <a href="index.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs block">Home</span>
+        </a>
+        <a href="#menu" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-bars text-xl"></i>
+            <span class="text-xs block">Menu</span>
+        </a>
+        <a href="exam.html" class="quick-exam-btn w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl -mt-8 border-4 border-white">
+            <i class="fas fa-bolt"></i>
+        </a>
+        <a href="leaderboard.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs block">Leaders</span>
+        </a>
+        <a href="profile.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs block">Account</span>
+        </a>
+    </div>
+
+    <script>
+        function startExam() {
+            document.getElementById('exam-selection').classList.add('hidden');
+            document.getElementById('exam-interface').classList.remove('hidden');
+            
+            // Start Timer
+            let duration = 30 * 60; // 30 minutes in seconds
+            const timerDisplay = document.getElementById('timer');
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerDisplay.innerHTML = `<i class="fas fa-clock"></i> ${minutes}:${seconds}`;
+
+                if (--timer < 0) {
+                    // Auto-submit logic here
+                    alert("Time's up! Auto-submitting.");
+                    timerDisplay.innerHTML = `<i class="fas fa-clock"></i> 00:00`;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
