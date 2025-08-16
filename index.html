@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Exam Platform - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bee0ec;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer {
+            background-color: #0f3c4c;
+        }
+        .font-roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+        .bottom-nav {
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .quick-exam-btn {
+            transform: translateY(-50%);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+        }
+        /* Simple fade animation for slider */
+        .slide {
+            display: none;
+            animation: fade 1.5s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+        /* Popup styles */
+        .popup-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+            animation: popup-appear 0.3s ease-out;
+        }
+        @keyframes popup-appear {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button class="text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40/0f3c4c/ffffff?text=L" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-xl font-bold font-roboto-slab text-[#0f3c4c]">ExamPro</span>
+                </a>
+            </div>
+            <a href="profile.html" class="bg-[#0f3c4c] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition duration-300 flex items-center space-x-2">
+                <i class="fas fa-user"></i>
+                <span>Login</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-6">
+
+        <!-- Image Slider -->
+        <div class="relative w-full max-w-4xl mx-auto mb-8 rounded-lg overflow-hidden shadow-lg" id="slider">
+            <div class="slide active">
+                <img src="https://placehold.co/1200x400/3498db/ffffff?text=Welcome+to+ExamPro" alt="Slider Image 1" class="w-full">
+            </div>
+            <div class="slide">
+                <img src="https://placehold.co/1200x400/2ecc71/ffffff?text=Test+Your+Knowledge" alt="Slider Image 2" class="w-full">
+            </div>
+            <div class="slide">
+                <img src="https://placehold.co/1200x400/e74c3c/ffffff?text=Achieve+Greatness" alt="Slider Image 3" class="w-full">
+            </div>
+             <!-- Slider controls -->
+            <button onclick="changeSlide(-1)" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75">&lt;</button>
+            <button onclick="changeSlide(1)" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75">&gt;</button>
+        </div>
+
+        <!-- User Stats & Live Exam -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- User Points -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-star text-4xl text-yellow-500 mb-2"></i>
+                <h3 class="text-xl font-semibold font-lato">Your Points</h3>
+                <p class="text-3xl font-bold text-[#0f3c4c]">1,250</p>
+            </div>
+            <!-- User Level -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-trophy text-4xl text-green-500 mb-2"></i>
+                <h3 class="text-xl font-semibold font-lato">Your Level</h3>
+                <p class="text-3xl font-bold text-[#0f3c4c]">Level 25</p>
+            </div>
+            <!-- Live Exam -->
+            <div class="bg-gradient-to-r from-red-500 to-orange-500 text-white p-6 rounded-lg shadow-lg text-center flex flex-col justify-center items-center transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="window.location.href='exam.html'">
+                <div class="animate-pulse">
+                    <i class="fas fa-satellite-dish text-4xl mb-2"></i>
+                    <h3 class="text-2xl font-bold font-roboto-slab">Live Exam is ON!</h3>
+                    <p class="font-lato">Click here to start</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Exam Winner -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold text-center mb-4 font-roboto-slab text-[#0f3c4c]">🏆 Previous Exam Winner 🏆</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+                <img src="https://placehold.co/100x100/0f3c4c/ffffff?text=W" alt="Winner" class="w-24 h-24 rounded-full border-4 border-yellow-400 shadow-lg">
+                <div>
+                    <h3 class="text-xl font-semibold text-center md:text-left">Md. Ashikur Rahman</h3>
+                    <p class="text-gray-600 text-center md:text-left">Dhaka College</p>
+                    <p class="text-lg font-bold text-green-600 text-center md:text-left">Score: 98/100</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-white pt-10 pb-24 md:pb-10">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left px-6">
+            <!-- Logo and Info -->
+            <div>
+                <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                    <img src="https://placehold.co/40x40/ffffff/0f3c4c?text=L" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-2xl font-bold font-roboto-slab">ExamPro</span>
+                </div>
+                <p class="text-gray-400 font-lato">Your #1 platform for acing competitive exams.</p>
+            </div>
+            <!-- Contact Details -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                <ul class="space-y-2 text-gray-400 font-lato">
+                    <li><i class="fas fa-phone mr-2"></i> +880 1234 567890</li>
+                    <li><i class="fas fa-envelope mr-2"></i> support@exampro.com</li>
+                    <li><i class="fas fa-map-marker-alt mr-2"></i> Dhaka, Bangladesh</li>
+                </ul>
+            </div>
+            <!-- Follow Us -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                    <a href="#" class="hover:text-blue-500 transition-colors"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-pink-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500">
+            <p>&copy; 2024 ExamPro. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white h-16 flex items-center justify-around md:hidden bottom-nav">
+        <a href="index.html" class="text-center text-[#0f3c4c]">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs block">Home</span>
+        </a>
+        <a href="#menu" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-bars text-xl"></i>
+            <span class="text-xs block">Menu</span>
+        </a>
+        <a href="exam.html" class="quick-exam-btn w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl -mt-8 border-4 border-white">
+            <i class="fas fa-bolt"></i>
+        </a>
+        <a href="leaderboard.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs block">Leaders</span>
+        </a>
+        <a href="profile.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs block">Account</span>
+        </a>
+    </div>
+
+    <!-- Admin Popup -->
+    <div id="adminPopup" class="popup-overlay flex"> <!-- 'flex' to show, 'none' to hide -->
+        <div class="popup-content">
+            <h2 class="text-2xl font-bold mb-4 font-roboto-slab text-[#0f3c4c]">Important Notice!</h2>
+            <p class="text-gray-700 mb-6 font-lato">
+                This is a sample message from the admin. The weekly exam schedule has been updated. Please check the exam page for more details.
+            </p>
+            <button onclick="closePopup()" class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition duration-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Image Slider Logic
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].classList.add("active");
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        function changeSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            slides[slideIndex-1].classList.remove("active");
+            slideIndex += n;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            if (slideIndex < 1) {slideIndex = slides.length}
+            slides[slideIndex-1].classList.add("active");
+        }
+
+        // Popup Logic
+        function closePopup() {
+            document.getElementById('adminPopup').style.display = 'none';
+        }
+
+        // To test the popup, you can uncomment the line below
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     document.getElementById('adminPopup').style.display = 'flex';
+        // });
+    </script>
+
+</body>
+</html>
