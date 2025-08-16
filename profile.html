@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - MCQ Exam Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #bee0ec;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer {
+            background-color: #0f3c4c;
+        }
+        .font-roboto-slab {
+            font-family: 'Roboto Slab', serif;
+        }
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+        .bottom-nav {
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .quick-exam-btn {
+            transform: translateY(-50%);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+        }
+        /* Hide elements meant for logged-in or logged-out states */
+        .logged-in { display: none; }
+        .logged-out { display: block; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button class="text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40/0f3c4c/ffffff?text=L" alt="Logo" class="h-10 w-10 rounded-full">
+                    <span class="text-xl font-bold font-roboto-slab text-[#0f3c4c]">My Profile</span>
+                </a>
+            </div>
+            <a href="profile.html" class="bg-[#0f3c4c] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition duration-300 flex items-center space-x-2">
+                <i class="fas fa-user"></i>
+                <span id="header-login-text">Login</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-6">
+
+        <!-- Logged Out View: Login/Sign Up Form -->
+        <div id="auth-section" class="logged-out max-w-md mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <!-- Login Form -->
+                <div id="login-form">
+                    <h2 class="text-3xl font-bold text-center mb-6 font-roboto-slab text-[#0f3c4c]">Welcome Back!</h2>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="login-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="login-phone" name="phone" placeholder="01XXXXXXXXX" pattern="01[3-9][0-9]{8}" title="Must be a valid 11-digit BD number" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="login-password" name="password" required minlength="6" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Login
+                        </button>
+                    </form>
+                    <p class="mt-6 text-center text-sm text-gray-600">
+                        Don't have an account? 
+                        <a href="#" id="show-signup" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            Sign up
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Signup Form (hidden by default) -->
+                <div id="signup-form" class="hidden">
+                    <h2 class="text-3xl font-bold text-center mb-6 font-roboto-slab text-[#0f3c4c]">Create Account</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="signup-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="signup-name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="signup-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="signup-phone" name="phone" placeholder="01XXXXXXXXX" pattern="01[3-9][0-9]{8}" title="Must be a valid 11-digit BD number" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                         <div>
+                            <label for="signup-school" class="block text-sm font-medium text-gray-700">School / College Name</label>
+                            <input type="text" id="signup-school" name="school" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="signup-password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="signup-password" name="password" required minlength="6" placeholder="Minimum 6 characters" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-green-500 to-teal-500 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            Sign Up
+                        </button>
+                    </form>
+                    <p class="mt-6 text-center text-sm text-gray-600">
+                        Already have an account? 
+                        <a href="#" id="show-login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                            Login
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logged In View: User Profile Dashboard -->
+        <div id="profile-dashboard" class="logged-in">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                    <div class="relative">
+                        <img src="https://placehold.co/120x120/0f3c4c/ffffff?text=A" alt="User Avatar" class="w-32 h-32 rounded-full border-4 border-white shadow-md">
+                        <button class="absolute bottom-0 right-0 bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-blue-600">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="text-center md:text-left mt-4 md:mt-0">
+                        <h1 class="text-3xl font-bold font-roboto-slab text-[#0f3c4c]">Md. Ashikur Rahman</h1>
+                        <p class="text-gray-600 font-lato">Dhaka College</p>
+                        <p class="text-gray-500 font-lato">01712345678</p>
+                    </div>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <i class="fas fa-star text-4xl text-yellow-500 mb-2"></i>
+                        <h3 class="text-xl font-semibold font-lato">Total Points</h3>
+                        <p class="text-4xl font-bold text-[#0f3c4c]">1,250</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <i class="fas fa-trophy text-4xl text-green-500 mb-2"></i>
+                        <h3 class="text-xl font-semibold font-lato">Current Level</h3>
+                        <p class="text-4xl font-bold text-[#0f3c4c]">25</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button class="bg-red-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-600 transition-colors duration-300">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-white pt-10 pb-24 md:pb-10">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 ExamPro. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white h-16 flex items-center justify-around md:hidden bottom-nav">
+        <a href="index.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs block">Home</span>
+        </a>
+        <a href="#menu" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-bars text-xl"></i>
+            <span class="text-xs block">Menu</span>
+        </a>
+        <a href="exam.html" class="quick-exam-btn w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white text-2xl -mt-8 border-4 border-white">
+            <i class="fas fa-bolt"></i>
+        </a>
+        <a href="leaderboard.html" class="text-center text-gray-600 hover:text-[#0f3c4c]">
+            <i class="fas fa-trophy text-xl"></i>
+            <span class="text-xs block">Leaders</span>
+        </a>
+        <a href="profile.html" class="text-center text-[#0f3c4c]">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs block">Account</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showSignupBtn = document.getElementById('show-signup');
+            const showLoginBtn = document.getElementById('show-login');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+
+            showSignupBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+            });
+
+            showLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+            });
+            
+            // This is a placeholder to simulate login.
+            // In a real app, you would check a user's session status.
+            const isLoggedIn = false; // Change to true to see the profile dashboard
+            if (isLoggedIn) {
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('profile-dashboard').style.display = 'block';
+                document.getElementById('header-login-text').textContent = 'Logout';
+            } else {
+                document.getElementById('auth-section').style.display = 'block';
+                document.getElementById('profile-dashboard').style.display = 'none';
+                 document.getElementById('header-login-text').textContent = 'Login';
+            }
+        });
+    </script>
+</body>
+</html>
